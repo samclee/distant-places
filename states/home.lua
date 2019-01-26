@@ -4,8 +4,7 @@ local home = {}
 local gates = {Gate(799,200,30,400,'rm1',200,400)}
 local walls = {AABB(10,10,500,70),
 				AABB(10,500,400,30)}
-local boxes = {TextBox(600, 450, 100,40,'hello',colors.white,colors.black)}
-local ppl = {Person(600,500,assets.ppl.s1,30,{"Hi there", "Okay bye"})}
+local ppl = {Person(600,500,assets.ppl.s1,30,1)}
 
 
 function home:enter(from,px,py)
@@ -43,7 +42,11 @@ function home:draw()
 	end
 	for i,p in pairs(ppl) do
 		if p.talking then
-			boxes[i]:draw()
+			local talk_index = p.t_idx
+			if game_end then
+				talk_index = talk_index + 1
+			end
+			textboxes[talk_index]:draw()
 		end
 	end
 end

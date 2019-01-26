@@ -1,4 +1,4 @@
-local TextBox = Class{ __include = AABB }
+local TextBox = Class{}
 
 function TextBox:init(x,y,w,h,line,bg_clr,txt_clr)
 	self.x=x

@@ -29,19 +29,26 @@ function rm_many(to_rm)
 	end
 end
 
+-- globals
+
+game_end = true
+
 -- classes
 Class = require 'libs/class'
 AABB = require 'classes/AABB'
+
 Player = require 'classes/Player'
 p = Player(10,10,assets.ppl.s0,40)
+
 Wall = require 'classes/Wall'
+
 Gate = require 'classes/Gate'
 TextBox = require 'classes/TextBox'
+
+textboxes = require 'assets/textboxes'
 Person = require 'classes/Person'
 
--- globals
 
-game_end = false
 
 -- states
 gamestate = require 'libs/gamestate'

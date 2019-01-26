@@ -1,13 +1,13 @@
 local Person = Class{}
 
-function Person:init(x,y,spr,r)
+function Person:init(x,y,spr,r,t_idx)
 	self.pos = vec(x,y)
 	self.w = spr:getWidth()
 	self.h = spr:getHeight()
 	self.spr = spr
 	self.r = r
 	
-	self.text = text
+	self.t_idx = t_idx
 	
 	self.debug = true
 end
