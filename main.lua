@@ -30,8 +30,7 @@ function rm_many(to_rm)
 end
 
 -- globals
-
-game_end = true
+game_end = false
 
 -- classes
 Class = require 'libs/class'
