@@ -1,7 +1,7 @@
 local clouds = {}
  
-local gates = {Gate(0,0,1,600,'waterfall',730,400),Gate(0,0,800,2,'forest',350,530)}
-local walls = {}
+local gates = {Gate(0,0,1,600,'waterfall',730,400),Gate(800,0,2,600,'forest',10,450)}
+local walls = {AABB(0,600,800,2),AABB(0,0,800,2)}
 local ppl = {}
 local src = assets.songs.clouds
 

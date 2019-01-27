@@ -3,8 +3,8 @@ local garden = {}
  
 local gates = {Gate(0,0,1,600,'home',722,245),Gate(0,599,800,10,'beach',40,40)}
 local walls = {AABB(350,180,100,60)}
-local ppl = {Person(610,90,assets.ppl.grandma,50,5),
-			  Person(220,410,assets.ppl.girl,50,7)}
+local ppl = {Person(610,90,assets.ppl.grandma,70,5),
+			  Person(220,410,assets.ppl.girl,70,7)}
 local src = assets.songs.garden
 
 function garden:enter(from,px,py)

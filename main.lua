@@ -12,6 +12,7 @@ ls = love.sound
 vec = require 'libs/vector'
 colors = require 'libs/colors'
 assets = require('libs/cargo').init('assets')
+Timer = require 'libs/timer'
 
 -- collision
 bump = require 'libs/bump'
@@ -64,14 +65,15 @@ font2 = assets.PixelOperator(36)
 -- globals
 game_end = false
 
+to_home = assets.songs.to_home
+to_home:setLooping(true)
+
 -- classes
 Class = require 'libs/class'
 AABB = require 'classes/AABB'
 
 Player = require 'classes/Player'
 p = Player(10,10,assets.ppl.Player,40)
-
-Wall = require 'classes/Wall'
 
 Gate = require 'classes/Gate'
 TextBox = require 'classes/TextBox'
@@ -83,6 +85,7 @@ Person = require 'classes/Person'
 gamestate = require 'libs/gamestate'
 
 states = {}
+states.title = require 'states/title'
 states.home = require 'states/home'
 states.garden = require 'states/garden'
 states.beach = require 'states/beach'
@@ -95,16 +98,11 @@ credits = require 'states/credits'
 
 function love.load()
 	gamestate.registerEvents()
-	gamestate.switch(states.home,100,300)
+	gamestate.switch(states.title)
 end
 
 function love.draw()
-	--[[lg.setColor(colors.green)
-	local items, len = world:getItems()
-	for i=1,len do
-		local x,y,w,h = world:getRect(items[i])
-		lg.rectangle('line',x,y,w,h)
-	end]]
+
 end
 
 function love.update(dt)
@@ -116,4 +114,10 @@ function love.update(dt)
 
 	p:update(dx,dy)
 	print(p.pos)
+end
+
+function love.keypressed(k)
+	if k == 'a' then
+		p.spd = 10
+	end
 end

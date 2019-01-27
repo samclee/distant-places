@@ -7,7 +7,6 @@ function Gate:init(x, y, w, h, to, px, py)
 	self.py = py
 	AABB.init(self,x,y,w,h)
 	self.debug_clr = colors.red
-	self.debug=true
 	
 	self.filter = function(item, other)
 		if other.id == 'player' then

@@ -4,7 +4,7 @@ function AABB:init(x, y, w, h)
     self.pos = vec(x, y)
     self.w = w
     self.h = h
-    self.debug=true
+    self.debug=false
     self.debug_clr = colors.orange
 end
 

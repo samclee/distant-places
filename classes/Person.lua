@@ -9,8 +9,7 @@ function Person:init(x,y,spr,r,t_idx)
 	self.id = 'person'
 	
 	self.t_idx = t_idx
-	
-	self.debug = true
+	self.debug = false
 end
 
 function Person:update(dt)
