@@ -1,14 +1,15 @@
 local beach = {}
 
  
-local gates = {}
+local gates = {Gate(0,0,800,1,'garden',476,524),Gate(799,0,5,600,'city',3,600-64)}
 local walls = {}
-local ppl = {Person(200,390,assets.ppl.fish,70,3)}
+local ppl = {Person(200,390,assets.ppl.fish,70,3),
+			  Person(600,100,assets.ppl.crab,90,1)}
 local src = assets.songs.beach
 
 function beach:enter(from,px,py)
 	p:teleport(px,py)
-	src:play()
+	if not game_end then src:play() end
 	add_many(walls)
 	add_many(gates)
 end

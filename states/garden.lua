@@ -1,14 +1,15 @@
 local garden = {}
 
  
-local gates = {Gate(0,0,1,600,'home',500,200),Gate(0,599,800,10,'beach',40,40)}
+local gates = {Gate(0,0,1,600,'home',722,245),Gate(0,599,800,10,'beach',40,40)}
 local walls = {AABB(350,180,100,60)}
-local ppl = {}
+local ppl = {Person(610,90,assets.ppl.grandma,50,5),
+			  Person(220,410,assets.ppl.girl,50,7)}
 local src = assets.songs.garden
 
 function garden:enter(from,px,py)
 	p:teleport(px,py)
-	src:play()
+	if not game_end then src:play() end
 	add_many(walls)
 	add_many(gates)
 end

@@ -58,6 +58,7 @@ end
 
 -- ui
 font1 = assets.rainyhearts(54)
+font3 = assets.rainyhearts(32)
 font2 = assets.PixelOperator(36)
 
 -- globals
@@ -85,7 +86,12 @@ states = {}
 states.home = require 'states/home'
 states.garden = require 'states/garden'
 states.beach = require 'states/beach'
+states.city = require 'states/city'
+states.waterfall = require 'states/waterfall'
+states.clouds = require 'states/clouds'
 states.forest = require 'states/forest'
+
+credits = require 'states/credits'
 
 function love.load()
 	gamestate.registerEvents()
@@ -109,4 +115,5 @@ function love.update(dt)
 	if lk.isDown('down') then dy=dy+1 end
 
 	p:update(dx,dy)
+	print(p.pos)
 end
