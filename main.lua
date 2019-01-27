@@ -113,7 +113,6 @@ function love.update(dt)
 	if lk.isDown('down') then dy=dy+1 end
 
 	p:update(dx,dy)
-	print(p.pos)
 end
 
 function love.keypressed(k)
