@@ -3,7 +3,7 @@ local Player = Class{ __includes = AABB }
 function Player:init(x, y, spr, r)
 	self.spr = spr
 	self.r = r
-	self.spd = 6
+	self.spd = 3
 	self.id = 'player'
 	AABB.init(self,x,y,spr:getWidth(),spr:getHeight())
 	world:add(self, self:get_rect())

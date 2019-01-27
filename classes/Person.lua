@@ -6,6 +6,7 @@ function Person:init(x,y,spr,r,t_idx)
 	self.h = spr:getHeight()
 	self.spr = spr
 	self.r = r
+	self.id = 'person'
 	
 	self.t_idx = t_idx
 	

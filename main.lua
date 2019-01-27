@@ -29,6 +29,37 @@ function rm_many(to_rm)
 	end
 end
 
+function draw_many(to_draw)
+	for _,t in pairs(to_draw) do
+		t:draw()
+	end
+end
+
+function update_many(to_update, dt)
+	for _,t in pairs(to_update) do
+		if world:hasItem(t) or t.id == 'person' then
+			t:update(dt)
+		end
+	end
+end
+
+function draw_ui(ppl)
+	for i,p in pairs(ppl) do
+		if p.talking then
+			local talk_index = p.t_idx
+			if game_end then
+				talk_index = talk_index + 1
+			end
+			lg.setFont(font2)
+			textboxes[talk_index]:draw()
+		end
+	end
+end
+
+-- ui
+font1 = assets.rainyhearts(54)
+font2 = assets.PixelOperator(36)
+
 -- globals
 game_end = false
 
@@ -37,7 +68,7 @@ Class = require 'libs/class'
 AABB = require 'classes/AABB'
 
 Player = require 'classes/Player'
-p = Player(10,10,assets.ppl.s0,40)
+p = Player(10,10,assets.ppl.Player,40)
 
 Wall = require 'classes/Wall'
 
@@ -47,13 +78,14 @@ TextBox = require 'classes/TextBox'
 textboxes = require 'assets/textboxes'
 Person = require 'classes/Person'
 
-
-
 -- states
 gamestate = require 'libs/gamestate'
+
 states = {}
 states.home = require 'states/home'
-states.rm1 = require 'states/rm1'
+states.garden = require 'states/garden'
+states.beach = require 'states/beach'
+states.forest = require 'states/forest'
 
 function love.load()
 	gamestate.registerEvents()
@@ -61,12 +93,12 @@ function love.load()
 end
 
 function love.draw()
-	lg.setColor(colors.green)
+	--[[lg.setColor(colors.green)
 	local items, len = world:getItems()
 	for i=1,len do
 		local x,y,w,h = world:getRect(items[i])
 		lg.rectangle('line',x,y,w,h)
-	end
+	end]]
 end
 
 function love.update(dt)

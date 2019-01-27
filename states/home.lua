@@ -1,11 +1,9 @@
 local home = {}
 
  
-local gates = {Gate(799,200,30,400,'rm1',200,400)}
-local walls = {AABB(10,10,500,70),
-				AABB(10,500,400,30)}
-local ppl = {Person(600,500,assets.ppl.s1,30,1)}
-
+local gates = {Gate(799,0,5,600,'garden',60,150)}
+local walls = {}
+local ppl = {}
 
 function home:enter(from,px,py)
 	p:teleport(px,py)
@@ -20,35 +18,22 @@ function home:leave()
 end
 
 function home:update(dt)
-	for _,g in pairs(gates) do
-		g:update()
-	end
-
-	for _,p in pairs(ppl) do
-		p:update()
-	end
+	update_many(gates)
+	update_many(ppl, dt)
 end
 
 function home:draw()
-	p:draw()
+	lg.setColor(colors.white)
+	lg.draw(assets.bg.home)
 	for _,g in pairs(gates) do
 		g:draw()
 	end
 	for _,w in pairs(walls) do
 		w:draw()
 	end
-	for _,p in pairs(ppl) do
-		p:draw()
-	end
-	for i,p in pairs(ppl) do
-		if p.talking then
-			local talk_index = p.t_idx
-			if game_end then
-				talk_index = talk_index + 1
-			end
-			textboxes[talk_index]:draw()
-		end
-	end
+	draw_many(ppl)
+	p:draw()
+	draw_ui(ppl)
 end
 
 return home
