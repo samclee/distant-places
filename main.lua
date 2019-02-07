@@ -84,6 +84,10 @@ Person = require 'classes/Person'
 -- states
 gamestate = require 'libs/gamestate'
 
+--framerate correction
+tick_time = 1/50
+accum = 0.0
+
 states = {}
 states.title = require 'states/title'
 states.home = require 'states/home'
@@ -106,6 +110,14 @@ function love.draw()
 end
 
 function love.update(dt)
+	accum = accum + dt
+	if accum >= tick_time then
+		accum = accum - tick_time
+		myupdate()
+	end
+end
+
+function myupdate()
 	local dx,dy=0,0
 	if lk.isDown('left') then dx=dx-1 end
 	if lk.isDown('right') then dx=dx+1 end
