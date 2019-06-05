@@ -85,7 +85,7 @@ Person = require 'classes/Person'
 gamestate = require 'libs/gamestate'
 
 --framerate correction
-tick_time = 1/50
+tick_time = 1/70
 accum = 0.0
 
 states = {}
@@ -115,6 +115,7 @@ function love.update(dt)
 		accum = accum - tick_time
 		myupdate()
 	end
+	
 end
 
 function myupdate()
@@ -130,5 +131,9 @@ end
 function love.keypressed(k)
 	if k == 'a' then
 		p.spd = 10
-	end
+	elseif k == 'f' then
+    lw.setFullscreen(true)
+  elseif k == 'q' then
+    le.quit()
+  end
 end
